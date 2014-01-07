@@ -6,23 +6,23 @@
 namespace echttp
 {
 
-class iopool
+class Iopool
 {
 public:
-    static iopool* Instance(int thread_num);
+    static Iopool* Instance(int thread_num);
     void Stop(void);
 
     boost::asio::io_service io;
 
 private:
-    iopool(int thread_num);
+    Iopool(int thread_num);
     ~iopool();
 
     boost::asio::io_service::work work;
     boost::thread_group workers;
 
 protected:
-    static iopool * pool;
+    static Iopool * pool;
 
 };
 

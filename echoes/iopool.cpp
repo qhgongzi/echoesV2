@@ -1,6 +1,6 @@
 #include "iopool.h"
 
-echttp::iopool* echttp::iopool::pool=NULL;
+echttp::Iopool* echttp::Iopool::pool=NULL;
 
 echttp::iopool::~iopool()
 {
@@ -8,21 +8,21 @@ echttp::iopool::~iopool()
 }
 
 
-echttp::iopool *echttp::iopool::Instance(int thread_num)
+echttp::Iopool *echttp::Iopool::Instance(int thread_num)
 {
     if (NULL==pool)
     {
-        pool=new iopool(thread_num);
+        pool=new Iopool(thread_num);
     }
     return pool;
 }
 
-void echttp::iopool::Stop()
+void echttp::Iopool::Stop()
 {
     io.stop();
 }
 
-echttp::iopool::iopool(int thread_num)
+echttp::Iopool::Iopool(int thread_num)
     :work(io)
 {
     for(int i=0;i<thread_num;++i)
